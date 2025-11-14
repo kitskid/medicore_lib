@@ -1,0 +1,33 @@
+{
+    "name": "@kitskid/medicore_lib",
+    "version": "1.0.0",
+    "description": "npm package with shared types",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/**/*"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "prepublishOnly": "npm run build",
+        "test": "echo \"No tests yet\" && exit 0"
+    },
+    "keywords": [
+        "typescript",
+        "types",
+        "shared"
+    ],
+    "author": "",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kitskid/medicore_lib.git"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "packageManager": "pnpm@10.22.0"
+}

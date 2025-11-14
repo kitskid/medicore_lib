@@ -1,0 +1,15 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: npm-package
+        restart: always
+        working_dir: /app
+        tty: true
+        volumes:
+            - .:/app
+            - ~/.pnpm-store:/.pnpm-store
+        # command: ["pnpm", "start:dev"]
+        env_file:
+            - .env
