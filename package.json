@@ -1,5 +1,5 @@
 {
-    "name": "@AlexanderDoe42/medicore_lib",
+    "name": "@kitskid/medicore_lib",
     "version": "1.0.0",
     "description": "npm package with shared types",
     "main": "dist/index.js",
@@ -21,7 +21,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/AlexanderDoe42/medicore_lib.git"
+        "url": "git+https://github.com/kitskid/medicore_lib.git"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
