@@ -1,6 +1,6 @@
 {
     "name": "@kitskid/medicore_lib",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "description": "npm package with shared types",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -29,5 +29,9 @@
     "devDependencies": {
         "typescript": "^5.0.0"
     },
-    "packageManager": "pnpm@10.22.0"
+    "packageManager": "pnpm@10.22.0",
+    "dependencies": {
+        "@nestjs/microservices": "^11.1.9",
+        "rxjs": "^7.8.2"
+    }
 }
