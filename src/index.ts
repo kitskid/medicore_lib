@@ -1,13 +1,15 @@
-// Re-export all events
-export * from './events/user-created.event';
+// Re-export event contracts
+export * from './contracts/events/auth-user-registered.event';
 
-// Re-export constants
-export * from './constants/exchanges';
-export * from './constants/routing-keys';
+// Re-export rpc contracts
+export * from './contracts/rpc/get-personal-profile';
 
-// // Re-export DTOs (only if you keep DTOs in contracts)
-// export * from './dto/create-order.dto';
-// export * from './dto/update-user.dto';
+// // Re-export rmq-client
+export * from './rmq-client/rmq.client';
+
+// // Re-export rpc-clients
+export * from './rpc-clients/auth.client';
+export * from './rpc-clients/profiles.client';
 
 // // Re-export common types & interfaces
 // export * from './types/event.interface';
