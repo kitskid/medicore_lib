@@ -1,5 +1,11 @@
 // Re-export event contracts
 export * from './contracts/events/auth-user-registered.event';
+export * from './contracts/events/appointment-created.event';
+export * from './contracts/events/appointment-updated.event';
+export * from './contracts/events/appointment-canceled.event';
+export * from './contracts/events/profile-created.event';
+export * from './contracts/events/profile-updated.event';
+export * from './contracts/events/profile-deleted.event';
 
 // Re-export rpc contracts
 export * from './contracts/rpc/get-personal-profile';
