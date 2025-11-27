@@ -9,6 +9,7 @@ export * from './contracts/events/profiles-profile-deleted.event';
 
 // Re-export rpc contracts
 export * from './contracts/rpc/get-personal-profile';
+export * from './contracts/rpc/profile.create';
 
 // // Re-export rmq-client
 export * from './rmq-client/rmq.client';
