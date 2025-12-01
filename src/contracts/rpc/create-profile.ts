@@ -55,3 +55,6 @@ export class CreateProfileRpcContract implements IBaseRpcContract<ReqType, ResTy
     readonly response: ResType;
 }
 
+
+
+
