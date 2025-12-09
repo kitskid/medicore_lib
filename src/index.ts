@@ -18,6 +18,9 @@ export * from './rmq-client/rmq.client';
 export * from './rpc-clients/auth.client';
 export * from './rpc-clients/profiles.client';
 
+// Crypto utilities
+export * from './crypto';
+
 // // Re-export common types & interfaces
 // export * from './types/event.interface';
 // export * from './types/user.types';

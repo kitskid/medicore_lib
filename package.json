@@ -10,7 +10,7 @@
     "scripts": {
         "build": "tsc",
         "prepublishOnly": "npm run build",
-        "test": "echo \"No tests yet\" && exit 0"
+        "test": "npm run build && node --test dist/tests/**/*.js"
     },
     "keywords": [
         "typescript",
@@ -27,6 +27,7 @@
         "registry": "https://npm.pkg.github.com"
     },
     "devDependencies": {
+        "@types/node": "^22.9.0",
         "typescript": "^5.0.0"
     },
     "packageManager": "pnpm@10.22.0",
