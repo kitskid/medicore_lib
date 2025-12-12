@@ -21,11 +21,9 @@ export * from './rpc-clients/profiles.client';
 // Crypto utilities
 export * from './crypto';
 
-// // Re-export common types & interfaces
-// export * from './types/event.interface';
-// export * from './types/user.types';
-// export * from './types/order.types';
+// Re-export common types & interfaces
+export * from './types/user.types';
+export * from './types/user-role.enum';
 
-// // Re-export enums
-// export * from './enums/order-status.enum';
-// export * from './enums/user-role.enum';
+// Re-export decorators
+export * from './decorators/user.decorator';
