@@ -16,4 +16,3 @@ export interface KeyProvider {
 }
 
 export type AadPart = string | Buffer | Uint8Array;
-

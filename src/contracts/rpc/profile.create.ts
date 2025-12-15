@@ -1,4 +1,4 @@
-import { IBaseRpcContract } from "./rpc.interface";
+import { IBaseRpcContract } from './rpc.interface';
 
 type ReqType = {
     firstName: string;
@@ -7,9 +7,9 @@ type ReqType = {
     userId: string;
     email: string;
     phone?: {
-        national: string,
-        countryCode: string,
-        isoCode: string,
+        national: string;
+        countryCode: string;
+        isoCode: string;
     };
 };
 

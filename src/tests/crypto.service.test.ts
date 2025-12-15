@@ -40,4 +40,3 @@ test('reject invalid key size', async () => {
     });
     await assert.rejects(() => badProvider.getKey(FIELD), /DEK length invalid/);
 });
-

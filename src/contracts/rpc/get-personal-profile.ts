@@ -1,4 +1,4 @@
-import { IBaseRpcContract } from "./rpc.interface";
+import { IBaseRpcContract } from './rpc.interface';
 
 type ReqType = {
     a: number;
