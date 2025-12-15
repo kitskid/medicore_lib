@@ -1,5 +1,4 @@
-import { RpcBaseClient } from "./base.client";
-
+import { RpcBaseClient } from './base.client';
 
 export class ProfilesRpcClient extends RpcBaseClient {
     static readonly serviceName = 'PROFILES_RPC';

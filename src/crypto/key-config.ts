@@ -18,4 +18,3 @@ export const defaultFieldKeyMapping: FieldKeyMapping = {
 //   "pii.default": { "keyId": "pii-key", "keyVersion": "v1", "dekB64": "..." },
 //   "medical.default": { "keyId": "med-key", "keyVersion": "v1", "dekB64": "..." }
 // }
-

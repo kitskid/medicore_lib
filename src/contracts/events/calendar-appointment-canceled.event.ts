@@ -1,4 +1,4 @@
-import { IBaseEventContract } from "./events.interface";
+import { IBaseEventContract } from './events.interface';
 
 type ReqType = {
     id: string;
@@ -10,4 +10,3 @@ export class AppointmentCanceledEventContract implements IBaseEventContract<ReqT
     readonly pattern = AppointmentCanceledEventContract.pattern;
     readonly data: ReqType;
 }
-

@@ -1,4 +1,4 @@
-import { IBaseEventContract } from "./events.interface";
+import { IBaseEventContract } from './events.interface';
 
 type ReqType = {
     userId: string;
@@ -10,4 +10,3 @@ export class ProfileCreatedEventContract implements IBaseEventContract<ReqType> 
     readonly pattern = ProfileCreatedEventContract.pattern;
     readonly data: ReqType;
 }
-

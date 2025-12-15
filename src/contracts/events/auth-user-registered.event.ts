@@ -1,4 +1,4 @@
-import { IBaseEventContract } from "./events.interface";
+import { IBaseEventContract } from './events.interface';
 
 type ReqType = {
     firstName: string;
@@ -6,9 +6,9 @@ type ReqType = {
     patronymic?: string;
     email: string;
     phone: {
-        national: string,
-        countryCode: string,
-        isoCode: string,
+        national: string;
+        countryCode: string;
+        isoCode: string;
     };
     emailCode: string;
     smsCode: string;
