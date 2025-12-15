@@ -11,7 +11,7 @@ export abstract class RpcBaseClient {
     async send<T extends IBaseRpcContract<any, any>>(
         eventClass: { new (...args: any[]): T; cmd: string },
         data: T['data'],
-        timeout = 5000
+        timeout = 5000,
     ): Promise<T['response']> {
         return firstValueFrom(this.client.send<T['response']>({ cmd: eventClass.cmd }, data).pipe(tm(timeout)));
     }

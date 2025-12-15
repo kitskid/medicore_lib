@@ -12,7 +12,7 @@ export class EventClient {
 
     emit<T extends IBaseEventContract<any>>(
         eventClass: { new (...args: any[]): T; pattern: string },
-        data: T['data']
+        data: T['data'],
     ): void {
         this.client.emit(eventClass.pattern, data);
     }

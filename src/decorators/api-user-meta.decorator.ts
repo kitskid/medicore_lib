@@ -23,5 +23,5 @@ export const ApiUserMeta = () =>
             required: true,
             enum: UserRole,
             example: UserRole.PATIENT,
-        })
+        }),
     );

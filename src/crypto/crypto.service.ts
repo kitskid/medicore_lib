@@ -53,6 +53,6 @@ export function buildAad(parts: AadPart[]): Buffer {
             acc.push(buf);
             if (idx < buffers.length - 1) acc.push(separator);
             return acc;
-        }, [])
+        }, []),
     );
 }

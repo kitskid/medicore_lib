@@ -30,7 +30,7 @@ test('decrypt fails with wrong AAD', async () => {
     const encrypted = await cryptoService.encrypt(FIELD, plaintext, ['a']);
     await assert.rejects(
         () => cryptoService.decrypt(FIELD, encrypted, ['b']),
-        /Unsupported state or unable to authenticate data/
+        /Unsupported state or unable to authenticate data/,
     );
 });
 
