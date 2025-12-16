@@ -24,4 +24,10 @@ export const ApiUserMeta = () =>
             enum: UserRole,
             example: UserRole.PATIENT,
         }),
+        ApiHeader({
+            name: 'X-Session-Id',
+            description: 'ID сессии пользователя',
+            required: false,
+            example: 'session-1234567890',
+        }),
     );

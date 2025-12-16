@@ -9,6 +9,7 @@ export const User = createParamDecorator((data: unknown, ctx: ExecutionContext):
     const headers = request.headers;
     const userIdHeader = headers['x-user-id'] || headers['X-User-Id'];
     const userRoleHeader = headers['x-user-role'] || headers['X-User-Role'];
+    const sessionIdHeader = headers['x-session-id'] || headers['X-Session-Id'];
 
     if (!userIdHeader || !userRoleHeader) {
         throw new UnauthorizedException('User ID or role not found in request headers');
@@ -17,6 +18,11 @@ export const User = createParamDecorator((data: unknown, ctx: ExecutionContext):
     // Заголовки могут быть строкой или массивом строк
     const userId = Array.isArray(userIdHeader) ? userIdHeader[0] : userIdHeader;
     const userRoleStr = Array.isArray(userRoleHeader) ? userRoleHeader[0] : userRoleHeader;
+    const sessionId = sessionIdHeader
+        ? Array.isArray(sessionIdHeader)
+            ? sessionIdHeader[0]
+            : sessionIdHeader
+        : undefined;
 
     if (!userId || !userRoleStr) {
         throw new UnauthorizedException('User not found in request headers');
@@ -31,6 +37,7 @@ export const User = createParamDecorator((data: unknown, ctx: ExecutionContext):
     const user: Medicore.User = {
         id: String(userId),
         role: role as UserRole,
+        ...(sessionId && { sessionId: String(sessionId) }),
     };
 
     return user;
