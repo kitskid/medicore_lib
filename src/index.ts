@@ -1,5 +1,7 @@
 // Re-export event contracts
 export * from './contracts/events/auth-user-registered.event';
+export * from './contracts/events/auth-email-confirmed.event';
+export * from './contracts/events/auth-phone-confirmed.event';
 export * from './contracts/events/calendar-appointment-created.event';
 export * from './contracts/events/calendar-appointment-updated.event';
 export * from './contracts/events/calendar-appointment-canceled.event';

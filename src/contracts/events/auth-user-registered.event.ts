@@ -10,8 +10,6 @@ type ReqType = {
         countryCode: string;
         isoCode: string;
     };
-    emailCode: string;
-    smsCode: string;
 };
 
 export class AuthUserRegisteredEventContract implements IBaseEventContract<ReqType> {
