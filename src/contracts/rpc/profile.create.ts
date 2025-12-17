@@ -14,7 +14,7 @@ type ReqType = {
 };
 
 type ResType = {
-    success: true;
+    success: boolean;
 };
 
 export class ProfileCreateRpcContract extends IBaseRpcContract<ReqType, ResType> {
