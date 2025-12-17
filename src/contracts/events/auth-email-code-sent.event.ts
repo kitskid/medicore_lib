@@ -11,3 +11,4 @@ export class AuthEmailCodeSentEventContract implements IBaseEventContract<ReqTyp
     readonly data: ReqType;
 }
 
+
