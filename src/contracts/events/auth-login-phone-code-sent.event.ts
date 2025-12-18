@@ -9,13 +9,9 @@ type ReqType = {
     smsCode: string;
 };
 
-export class AuthPinResetCodeSentEventContract implements IBaseEventContract<ReqType> {
-    static readonly pattern = 'auth.pin.reset.code.sent';
-    readonly pattern = AuthPinResetCodeSentEventContract.pattern;
+export class AuthLoginPhoneCodeSentEventContract implements IBaseEventContract<ReqType> {
+    static readonly pattern = 'auth.login.phone.code.sent';
+    readonly pattern = AuthLoginPhoneCodeSentEventContract.pattern;
     readonly data: ReqType;
 }
-
-
-
-
 
