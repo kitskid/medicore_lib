@@ -20,6 +20,7 @@ export * from './contracts/events/auth-forgot-password-phone-code-sent.event';
 // Re-export rpc contracts
 export * from './contracts/rpc/get-personal-profile';
 export * from './contracts/rpc/profile.create';
+export * from './contracts/rpc/patient.create';
 
 // // Re-export rmq-client
 export * from './rmq-client/rmq.client';
@@ -27,6 +28,7 @@ export * from './rmq-client/rmq.client';
 // // Re-export rpc-clients
 export * from './rpc-clients/auth.client';
 export * from './rpc-clients/profiles.client';
+export * from './rpc-clients/records.client';
 
 // Crypto utilities
 export * from './crypto';

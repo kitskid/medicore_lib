@@ -3,6 +3,8 @@ import { IBaseEventContract } from './events.interface';
 type ReqType = {
     userId: string;
     email: string | null;
+    firstName: string | null;
+    lastName: string | null;
 };
 
 export class ProfileCreatedEventContract implements IBaseEventContract<ReqType> {
