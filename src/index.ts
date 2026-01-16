@@ -14,6 +14,8 @@ export * from './contracts/events/records-reminder-deleted.event';
 export * from './contracts/events/profiles-profile-created.event';
 export * from './contracts/events/profiles-profile-updated.event';
 export * from './contracts/events/profiles-profile-deleted.event';
+export * from './contracts/events/auth-forgot-password-email-code-sent.event';
+export * from './contracts/events/auth-forgot-password-phone-code-sent.event';
 
 // Re-export rpc contracts
 export * from './contracts/rpc/get-personal-profile';
