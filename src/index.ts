@@ -11,6 +11,7 @@ export * from './contracts/events/records-reminder-created.event';
 export * from './contracts/events/records-reminder-updated.event';
 export * from './contracts/events/records-reminder-completed.event';
 export * from './contracts/events/records-reminder-deleted.event';
+export * from './contracts/events/reminders-reload-scheduled.event';
 export * from './contracts/events/profiles-profile-created.event';
 export * from './contracts/events/profiles-profile-updated.event';
 export * from './contracts/events/profiles-profile-deleted.event';
@@ -21,6 +22,7 @@ export * from './contracts/events/auth-forgot-password-phone-code-sent.event';
 export * from './contracts/rpc/get-personal-profile';
 export * from './contracts/rpc/profile.create';
 export * from './contracts/rpc/patient.create';
+export * from './contracts/rpc/reminders.create-from-rule';
 
 // // Re-export rmq-client
 export * from './rmq-client/rmq.client';
@@ -29,6 +31,7 @@ export * from './rmq-client/rmq.client';
 export * from './rpc-clients/auth.client';
 export * from './rpc-clients/profiles.client';
 export * from './rpc-clients/records.client';
+export * from './rpc-clients/reminders.client';
 
 // Crypto utilities
 export * from './crypto';
