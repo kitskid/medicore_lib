@@ -23,6 +23,7 @@ export * from './contracts/rpc/get-personal-profile';
 export * from './contracts/rpc/profile.create';
 export * from './contracts/rpc/patient.create';
 export * from './contracts/rpc/reminders.create-from-rule';
+export * from './contracts/rpc/reminders.generate-from-intakes';
 
 // // Re-export rmq-client
 export * from './rmq-client/rmq.client';
@@ -43,3 +44,6 @@ export * from './types/user-role.enum';
 // Re-export decorators
 export * from './decorators/user.decorator';
 export * from './decorators/api-user-meta.decorator';
+
+// Re-export utilities
+export * from './utils/timezone.util';
