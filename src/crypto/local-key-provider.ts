@@ -53,8 +53,26 @@ export class LocalKeyProvider implements KeyProvider {
         return new LocalKeyProvider(config);
     }
 
-    async getKey(fieldType: string): Promise<KeySpec> {
-        const entry = this.config[fieldType] ?? this.config.default;
+    private resolveEntry(fieldType: string, keyVersion?: string): KeyEntry | undefined {
+        if (keyVersion) {
+            // Для обратной совместимости: можно хранить несколько версий ключей в CRYPTO_KEYS_JSON
+            // под ключами вида "<fieldType>@<keyVersion>" (например "default@v1").
+            const byVersion =
+                this.config[`${fieldType}@${keyVersion}`] ??
+                this.config[`default@${keyVersion}`];
+            if (byVersion) return byVersion;
+
+            // Фоллбек: если конфиг задан ровно одним ключом (без keyring),
+            // попробуем использовать текущий entry.
+            const direct = this.config[fieldType] ?? this.config.default;
+            return direct;
+        }
+
+        return this.config[fieldType] ?? this.config.default;
+    }
+
+    async getKey(fieldType: string, keyVersion?: string): Promise<KeySpec> {
+        const entry = this.resolveEntry(fieldType, keyVersion);
         if (!entry) {
             throw new Error(`No key configured for field type "${fieldType}"`);
         }
@@ -67,6 +85,31 @@ export class LocalKeyProvider implements KeyProvider {
             keyVersion: entry.keyVersion,
             dek,
         };
+    }
+}
+
+/**
+ * KeyProvider, который перечитывает env с периодическим кешем.
+ * Нужен для hot-reload: когда Vault Agent обновляет файл секретов, мы обновляем process.env,
+ * а этот провайдер подхватывает новый ключ без рестарта.
+ */
+export class DynamicEnvKeyProvider implements KeyProvider {
+    private lastLoadedAt = 0;
+    private cached?: LocalKeyProvider;
+
+    constructor(private readonly cacheTtlMs = 2_000) { }
+
+    private getProvider(): LocalKeyProvider {
+        const now = Date.now();
+        if (!this.cached || now - this.lastLoadedAt > this.cacheTtlMs) {
+            this.cached = LocalKeyProvider.fromEnv();
+            this.lastLoadedAt = now;
+        }
+        return this.cached;
+    }
+
+    async getKey(fieldType: string, keyVersion?: string): Promise<KeySpec> {
+        return this.getProvider().getKey(fieldType, keyVersion);
     }
 }
 

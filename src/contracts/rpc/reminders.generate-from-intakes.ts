@@ -9,11 +9,30 @@ type ReqType = {
             patientId: string;
             medication: { tradeName: string };
             dosage: string;
+            // Окно отправки/повторов (HH:mm). Если не задано — отправляем всегда.
+            notificationWindowFrom?: string | null;
+            notificationWindowTo?: string | null;
         };
     }>;
     notificationSettings?: {
-        repeatCount?: number;
+        // null = без ограничений (повторы по repeatInterval до отмены/выполнения)
+        repeatCount?: number | null;
         repeatInterval?: number;
+    };
+    reminderOptions?: {
+        // Флаги напоминаний ДО события / курса
+        before5min?: boolean;
+        before15min?: boolean;
+        before30hour?: boolean;
+        before1hour?: boolean;
+        before1day?: boolean;
+        customInterval?: { value: number; unit: 'seconds' | 'minutes' | 'hours' };
+        fixedTime5min?: boolean;
+        fixedTime15min?: boolean;
+        fixedTime30hour?: boolean;
+        fixedTime1hour?: boolean;
+        fixedTime1day?: boolean;
+        customFixedTime?: string;
     };
 };
 
