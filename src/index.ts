@@ -44,3 +44,10 @@ export * from './types/user-role.enum';
 // Re-export decorators
 export * from './decorators/user.decorator';
 export * from './decorators/api-user-meta.decorator';
+
+// Reloadable Prisma helpers (URL resolve + safe logging; клиент генерируется в каждом сервисе)
+// См. src/prisma/README.md
+export * from './prisma';
+
+// Secrets env file (загрузка и поллер для Vault Agent–рендеренных файлов)
+export * from './secrets';
