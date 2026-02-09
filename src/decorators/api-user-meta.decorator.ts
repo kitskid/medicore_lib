@@ -30,4 +30,10 @@ export const ApiUserMeta = () =>
             required: false,
             example: 'session-1234567890',
         }),
+        ApiHeader({
+            name: 'X-Plan-Id',
+            description: 'ID тарифа подписки (из JWT, выставляет API-шлюз)',
+            required: false,
+            example: 'plan-basic-123',
+        }),
     );
