@@ -24,6 +24,8 @@ export * from './contracts/rpc/profile.create';
 export * from './contracts/rpc/patient.create';
 export * from './contracts/rpc/reminders.create-from-rule';
 export * from './contracts/rpc/reminders.generate-from-intakes';
+export * from './contracts/rpc/subscription.get-storage-limit-bytes';
+export * from './contracts/rpc/subscription.is-feature-enabled';
 
 // // Re-export rmq-client
 export * from './rmq-client/rmq.client';
@@ -44,6 +46,12 @@ export * from './types/user-role.enum';
 // Re-export decorators
 export * from './decorators/user.decorator';
 export * from './decorators/api-user-meta.decorator';
+
+// Subscription (guard, feature keys, ISubscriptionService)
+export * from './subscription';
+
+// Role guard
+export * from './guards';
 
 // Reloadable Prisma helpers (URL resolve + safe logging; клиент генерируется в каждом сервисе)
 // См. src/prisma/README.md
