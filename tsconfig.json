@@ -9,7 +9,9 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "rootDir": "./src"
+        "rootDir": "./src",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "include": [
         "src/**/*"
