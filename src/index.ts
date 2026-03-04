@@ -41,14 +41,10 @@ export * from './rpc-clients/reminders.client';
 // Crypto utilities
 export * from './crypto';
 
-// Env / secrets / database URL
-export * from './env/secrets-env';
-export * from './env/database-url';
-
-// Re-export common types & interfaces
+// Re-export common types & interfaces (subscription types: ISubscriptionService идёт из ./subscription, здесь только ответ API)
 export * from './types/user.types';
 export * from './types/user-role.enum';
-export * from './types/subscription-service.interface';
+export type { ISubscriptionApiResponse } from './types/subscription-service.interface';
 export * from './types/reminder.types';
 
 // Re-export decorators
