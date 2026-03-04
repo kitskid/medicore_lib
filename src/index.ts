@@ -4,6 +4,7 @@ export * from './contracts/events/auth-email-code-sent.event';
 export * from './contracts/events/auth-phone-code-sent.event';
 export * from './contracts/events/auth-login-phone-code-sent.event';
 export * from './contracts/events/auth-pin-reset-code-sent.event';
+export * from './contracts/events/auth-timezone-updated.event';
 export * from './contracts/events/calendar-appointment-created.event';
 export * from './contracts/events/calendar-appointment-updated.event';
 export * from './contracts/events/calendar-appointment-canceled.event';
@@ -17,6 +18,7 @@ export * from './contracts/events/profiles-profile-updated.event';
 export * from './contracts/events/profiles-profile-deleted.event';
 export * from './contracts/events/auth-forgot-password-email-code-sent.event';
 export * from './contracts/events/auth-forgot-password-phone-code-sent.event';
+export * from './contracts/events/subscription-updated.event';
 
 // Re-export rpc contracts
 export * from './contracts/rpc/get-personal-profile';
@@ -39,9 +41,15 @@ export * from './rpc-clients/reminders.client';
 // Crypto utilities
 export * from './crypto';
 
+// Env / secrets / database URL
+export * from './env/secrets-env';
+export * from './env/database-url';
+
 // Re-export common types & interfaces
 export * from './types/user.types';
 export * from './types/user-role.enum';
+export * from './types/subscription-service.interface';
+export * from './types/reminder.types';
 
 // Re-export decorators
 export * from './decorators/user.decorator';

@@ -1,50 +1,37 @@
 import { IBaseRpcContract } from './rpc.interface';
+import type {
+    NotificationSettings,
+    ReminderOptions,
+    ReminderRecordType,
+} from '../../types/reminder.types';
 
+/** Курсовой приём лекарств (по расписанию) или разовое напоминание */
 export type ReminderRuleType = 'COURSE' | 'ONE_TIME';
 
 export type ReminderRuleDto = {
     type: ReminderRuleType;
-    // Общие поля
     timezone?: string;
-
-    // Для COURSE (курсовой приём лекарств)
-    startDate?: string; // ISO 8601
+    /** Для COURSE — курс приёма лекарств: начало, длительность, частота */
+    startDate?: string;
     durationDays?: number;
-    frequency?: string; // например, 'daily', 'twice_daily' и т.п.
-
-    // Для ONE_TIME (разовое напоминание)
-    triggerAt?: string; // ISO 8601
+    frequency?: string;
+    /** Для ONE_TIME — момент разового напоминания (напр. приём врача, анализ) */
+    triggerAt?: string;
 };
 
-type ReqType = {
+export type ReminderCreateFromRuleReq = {
     patientId: string;
-    recordType: 'PRESCRIPTION' | 'APPOINTMENT' | 'LAB_TEST' | 'VACCINATION';
+    recordType: ReminderRecordType;
     recordId: string;
+    /** Для напоминаний о приёмах лекарств (INTAKE): название препарата */
     medicationName?: string;
+    /** Для напоминаний о приёмах лекарств (INTAKE): дозировка */
     dosage?: string;
-    notificationSettings?: {
-        // null = без ограничений (повторы по repeatInterval до отмены/выполнения)
-        repeatCount?: number | null;
-        repeatInterval?: number;
-    };
-    // Окно отправки/повторов (HH:mm). Если не задано — отправляем всегда.
+    notificationSettings?: NotificationSettings;
+    /** Окно отправки/повторов (HH:mm). Если не задано — отправляем всегда. */
     notificationWindowFrom?: string | null;
     notificationWindowTo?: string | null;
-    reminderOptions?: {
-        // Флаги напоминаний ДО события / курса
-        before5min?: boolean;
-        before15min?: boolean;
-        before30hour?: boolean;
-        before1hour?: boolean;
-        before1day?: boolean;
-        customInterval?: { value: number; unit: 'seconds' | 'minutes' | 'hours' };
-        fixedTime5min?: boolean;
-        fixedTime15min?: boolean;
-        fixedTime30hour?: boolean;
-        fixedTime1hour?: boolean;
-        fixedTime1day?: boolean;
-        customFixedTime?: string;
-    };
+    reminderOptions?: ReminderOptions;
     rule: ReminderRuleDto;
 };
 
@@ -54,8 +41,7 @@ type ResType = {
     count: number;
 };
 
-export class ReminderCreateFromRuleRpcContract extends IBaseRpcContract<ReqType, ResType> {
+export class ReminderCreateFromRuleRpcContract extends IBaseRpcContract<ReminderCreateFromRuleReq, ResType> {
     static readonly cmd = 'reminders.create.from_rule';
     readonly cmd = ReminderCreateFromRuleRpcContract.cmd;
 }
-

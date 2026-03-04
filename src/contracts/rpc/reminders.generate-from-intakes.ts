@@ -1,39 +1,25 @@
 import { IBaseRpcContract } from './rpc.interface';
+import type {
+    NotificationSettings,
+    ReminderOptions,
+} from '../../types/reminder.types';
 
+/** Запрос на создание напоминаний о приёмах лекарств по сгенерированным интейкам (расписание приёма по курсу назначения). */
 type ReqType = {
     prescriptionId: string;
     intakes: Array<{
         id: string;
-        scheduledTime: string; // ISO 8601
+        scheduledTime: string;
         prescription: {
             patientId: string;
             medication: { tradeName: string };
             dosage: string;
-            // Окно отправки/повторов (HH:mm). Если не задано — отправляем всегда.
             notificationWindowFrom?: string | null;
             notificationWindowTo?: string | null;
         };
     }>;
-    notificationSettings?: {
-        // null = без ограничений (повторы по repeatInterval до отмены/выполнения)
-        repeatCount?: number | null;
-        repeatInterval?: number;
-    };
-    reminderOptions?: {
-        // Флаги напоминаний ДО события / курса
-        before5min?: boolean;
-        before15min?: boolean;
-        before30hour?: boolean;
-        before1hour?: boolean;
-        before1day?: boolean;
-        customInterval?: { value: number; unit: 'seconds' | 'minutes' | 'hours' };
-        fixedTime5min?: boolean;
-        fixedTime15min?: boolean;
-        fixedTime30hour?: boolean;
-        fixedTime1hour?: boolean;
-        fixedTime1day?: boolean;
-        customFixedTime?: string;
-    };
+    notificationSettings?: NotificationSettings;
+    reminderOptions?: ReminderOptions;
 };
 
 type ResType = {
