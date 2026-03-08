@@ -14,7 +14,8 @@ export type ReminderRecordType =
     | 'LAB_TEST'
     | 'VACCINATION'
     | 'NOTE'
-    | 'DIAGNOSTIC_STUDY';
+    | 'DIAGNOSTIC_STUDY'
+    | 'PROCEDURE';
 
 /** Настройки повторов уведомления после времени события (repeatCount, repeatInterval в минутах). Для приёма лекарств — повторы, если пользователь не подтвердил приём. null = без ограничений. */
 export interface NotificationSettings {
@@ -32,14 +33,25 @@ export interface CustomIntervalValue {
 export interface ReminderOptions {
     before5min?: boolean;
     before15min?: boolean;
+    before30min?: boolean;
+    /** @deprecated use before30min */
     before30hour?: boolean;
     before1hour?: boolean;
     before1day?: boolean;
     customInterval?: CustomIntervalValue;
     fixedTime5min?: boolean;
     fixedTime15min?: boolean;
+    fixedTime30min?: boolean;
+    /** @deprecated use fixedTime30min */
     fixedTime30hour?: boolean;
     fixedTime1hour?: boolean;
     fixedTime1day?: boolean;
     customFixedTime?: string;
+}
+
+/** Действие в push-уведомлении. Формируется доменным сервисом (records), пробрасывается через reminders/notification до FCM. */
+export interface PushAction {
+    action: string;
+    title: string;
+    icon?: string;
 }

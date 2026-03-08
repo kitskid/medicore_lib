@@ -26,6 +26,9 @@ export * from './contracts/rpc/profile.create';
 export * from './contracts/rpc/patient.create';
 export * from './contracts/rpc/reminders.create-from-rule';
 export * from './contracts/rpc/reminders.generate-from-intakes';
+export * from './contracts/rpc/reminders.delete-future-by-prescription-ids';
+export * from './contracts/rpc/reminders.delete-future-by-record';
+export * from './contracts/rpc/reminders.acknowledge';
 export * from './contracts/rpc/subscription.get-storage-limit-bytes';
 export * from './contracts/rpc/subscription.is-feature-enabled';
 

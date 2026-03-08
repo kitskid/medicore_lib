@@ -2,11 +2,16 @@ import { IBaseRpcContract } from './rpc.interface';
 import type {
     NotificationSettings,
     ReminderOptions,
+    PushAction,
 } from '../../types/reminder.types';
 
 /** Запрос на создание напоминаний о приёмах лекарств по сгенерированным интейкам (расписание приёма по курсу назначения). */
 type ReqType = {
     prescriptionId: string;
+    /** IANA timezone пациента */
+    timezone?: string;
+    /** Действия для push-уведомления (формируются доменным сервисом) */
+    actions?: PushAction[];
     intakes: Array<{
         id: string;
         scheduledTime: string;
