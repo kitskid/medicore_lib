@@ -29,7 +29,7 @@ export * from './contracts/rpc/reminders.generate-from-intakes';
 export * from './contracts/rpc/reminders.delete-future-by-prescription-ids';
 export * from './contracts/rpc/reminders.delete-future-by-record';
 export * from './contracts/rpc/reminders.acknowledge';
-export * from './contracts/rpc/subscription.get-storage-limit-bytes';
+export * from './contracts/rpc/subscription.get-entitlement';
 export * from './contracts/rpc/subscription.is-feature-enabled';
 
 // // Re-export rmq-client
@@ -40,6 +40,7 @@ export * from './rpc-clients/auth.client';
 export * from './rpc-clients/profiles.client';
 export * from './rpc-clients/records.client';
 export * from './rpc-clients/reminders.client';
+export * from './rpc-clients/subscription.client';
 
 // Crypto utilities
 export * from './crypto';
