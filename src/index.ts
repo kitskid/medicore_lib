@@ -29,6 +29,10 @@ export * from './contracts/rpc/reminders.generate-from-intakes';
 export * from './contracts/rpc/subscription.get-storage-limit-bytes';
 export * from './contracts/rpc/subscription.is-feature-enabled';
 
+// Error contracts (HTTP error envelope + stable error codes + Swagger schemas)
+export * from './contracts/errors/error.contract';
+export * from './contracts/errors/openapi.schema';
+
 // // Re-export rmq-client
 export * from './rmq-client/rmq.client';
 

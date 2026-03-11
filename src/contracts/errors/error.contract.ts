@@ -1,0 +1,60 @@
+export type MedicoreErrorEnvelope = {
+    code: string;
+    message?: string;
+    details?: unknown;
+    requestId?: string;
+    service?: string;
+};
+
+export type MedicoreErrorResponse = {
+    error: MedicoreErrorEnvelope;
+};
+
+export type MedicoreValidationErrorDetail = {
+    field: string;
+    validationErrorCode: string;
+    message?: string;
+};
+
+export type MedicoreValidationErrorEnvelope = Omit<MedicoreErrorEnvelope, 'details'> & {
+    code: 'VALIDATION_ERROR';
+    details: MedicoreValidationErrorDetail[];
+};
+
+export type MedicoreValidationErrorResponse = {
+    error: MedicoreValidationErrorEnvelope;
+};
+
+/**
+ * Keep codes stable and unique across services.
+ * Prefer namespaced codes (e.g. AUTH_*, PROFILES_*, etc.).
+ */
+export enum MedicoreErrorCode {
+    // Common / platform
+    VALIDATION_ERROR = 'VALIDATION_ERROR',
+    INTERNAL_ERROR = 'INTERNAL_ERROR',
+    FORBIDDEN = 'FORBIDDEN',
+    UNAUTHORIZED = 'UNAUTHORIZED',
+    NOT_FOUND = 'NOT_FOUND',
+    CONFLICT = 'CONFLICT',
+    TOO_MANY_REQUESTS = 'TOO_MANY_REQUESTS',
+
+    // Auth
+    AUTH_SESSION_NOT_FOUND = 'AUTH_SESSION_NOT_FOUND',
+    AUTH_SESSION_NOT_VALID = 'AUTH_SESSION_NOT_VALID',
+    AUTH_REFRESH_TOKEN_NOT_FOUND = 'AUTH_REFRESH_TOKEN_NOT_FOUND',
+    AUTH_INVALID_REFRESH_TOKEN = 'AUTH_INVALID_REFRESH_TOKEN',
+    AUTH_INVALID_SET_PIN_TOKEN = 'AUTH_INVALID_SET_PIN_TOKEN',
+    AUTH_INVALID_CREDENTIALS = 'AUTH_INVALID_CREDENTIALS',
+    AUTH_USER_WITH_EMAIL_NOT_FOUND = 'AUTH_USER_WITH_EMAIL_NOT_FOUND',
+    AUTH_USER_ALREADY_EXISTS_EMAIL = 'AUTH_USER_ALREADY_EXISTS_EMAIL',
+    AUTH_USER_ALREADY_EXISTS_PHONE = 'AUTH_USER_ALREADY_EXISTS_PHONE',
+    AUTH_REGISTRATION_DRAFT_NOT_FOUND = 'AUTH_REGISTRATION_DRAFT_NOT_FOUND',
+    AUTH_CONSENT_REQUIRED = 'AUTH_CONSENT_REQUIRED',
+    AUTH_USER_AGREEMENT_REQUIRED = 'AUTH_USER_AGREEMENT_REQUIRED',
+    AUTH_INVALID_OR_EXPIRED_CODE = 'AUTH_INVALID_OR_EXPIRED_CODE',
+    AUTH_PASSWORD_RESET_INVALID_STATE = 'AUTH_PASSWORD_RESET_INVALID_STATE',
+    AUTH_PIN_NOT_SET_OR_SESSION_NOT_LOCKED = 'AUTH_PIN_NOT_SET_OR_SESSION_NOT_LOCKED',
+    AUTH_PIN_INVALID = 'AUTH_PIN_INVALID',
+    AUTH_FINGERPRINT_MISMATCH = 'AUTH_FINGERPRINT_MISMATCH',
+}
