@@ -40,6 +40,7 @@ export * from './rpc-clients/auth.client';
 export * from './rpc-clients/profiles.client';
 export * from './rpc-clients/records.client';
 export * from './rpc-clients/reminders.client';
+export * from './rpc-clients/subscription.client';
 
 // Crypto utilities
 export * from './crypto';
