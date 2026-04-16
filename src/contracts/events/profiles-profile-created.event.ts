@@ -5,6 +5,7 @@ type ReqType = {
     email: string | null;
     firstName: string | null;
     lastName: string | null;
+    patronymic?: string | null;
 };
 
 export class ProfileCreatedEventContract implements IBaseEventContract<ReqType> {
