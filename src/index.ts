@@ -4,6 +4,7 @@ export * from './contracts/events/auth-email-code-sent.event';
 export * from './contracts/events/auth-phone-code-sent.event';
 export * from './contracts/events/auth-login-phone-code-sent.event';
 export * from './contracts/events/auth-pin-reset-code-sent.event';
+export * from './contracts/events/auth-session-terminated.event';
 export * from './contracts/events/auth-timezone-updated.event';
 export * from './contracts/events/calendar-appointment-created.event';
 export * from './contracts/events/calendar-appointment-updated.event';
