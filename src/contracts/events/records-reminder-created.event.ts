@@ -1,4 +1,5 @@
 import { IBaseEventContract } from './events.interface';
+import type { PushAction } from '../../types/reminder.types';
 
 type ReqType = {
     id: string;
@@ -7,6 +8,7 @@ type ReqType = {
     message: string;
     isRecurring: boolean;
     recurrenceRule?: any;
+    actions?: PushAction[];
 };
 
 export class ReminderCreatedEventContract implements IBaseEventContract<ReqType> {
