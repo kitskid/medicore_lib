@@ -30,6 +30,8 @@ export * from './contracts/rpc/reminders.generate-from-intakes';
 export * from './contracts/rpc/reminders.delete-future-by-prescription-ids';
 export * from './contracts/rpc/reminders.delete-future-by-record';
 export * from './contracts/rpc/reminders.acknowledge';
+export * from './contracts/rpc/reminders.is-actual';
+export * from './contracts/rpc/reminders.mark-sent-atomic';
 export * from './contracts/rpc/subscription.get-entitlement';
 export * from './contracts/rpc/subscription.is-feature-enabled';
 
