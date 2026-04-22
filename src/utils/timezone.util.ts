@@ -6,6 +6,45 @@
  */
 
 /**
+ * Проверяет, содержит ли ISO-строка явный timezone suffix:
+ * - Z
+ * - +03:00 / -0500
+ */
+export function hasExplicitTimezoneSuffix(isoString: string): boolean {
+    return /(Z|[+-]\d{2}:?\d{2})$/i.test(isoString.trim());
+}
+
+/**
+ * Парсит ISO-строку и возвращает UTC Date.
+ * Если timezone suffix указан явно, строка интерпретируется как абсолютный instant.
+ * Иначе числа трактуются как локальное время пользователя в указанной timezone.
+ */
+export function parseLocalISOInTimezone(
+    isoString: string,
+    timezone: string = 'UTC',
+): Date {
+    const trimmed = isoString.trim();
+    if (hasExplicitTimezoneSuffix(trimmed)) {
+        return new Date(trimmed);
+    }
+
+    const match = trimmed.match(
+        /^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2})(?::(\d{2}))?(?:\.\d+)?)?$/,
+    );
+    if (!match) {
+        return new Date(trimmed);
+    }
+
+    const year = parseInt(match[1], 10);
+    const month = parseInt(match[2], 10);
+    const day = parseInt(match[3], 10);
+    const hours = match[4] != null ? parseInt(match[4], 10) : 0;
+    const minutes = match[5] != null ? parseInt(match[5], 10) : 0;
+
+    return createDateInTimezone(year, month, day, hours, minutes, timezone);
+}
+
+/**
  * Создает Date объект в UTC из локального времени пользователя с учетом timezone
  * @param year Год
  * @param month Месяц (1-12)
@@ -58,14 +97,11 @@ export function createDateInTimezone(
     const tzHours = parseInt(parts.find(p => p.type === 'hour')?.value || '0');
     const tzMinutes = parseInt(parts.find(p => p.type === 'minute')?.value || '0');
     
-    // Вычисляем разницу между желаемым локальным временем и тем, что получилось в timezone
-    // Это даст нам offset в миллисекундах
     const desiredLocalTime = new Date(year, month - 1, day, hours, minutes, 0);
     const actualTzTime = new Date(tzYear, tzMonth - 1, tzDay, tzHours, tzMinutes, 0);
     const offsetMs = desiredLocalTime.getTime() - actualTzTime.getTime();
-    
-    // Применяем offset к UTC дате
-    return new Date(tempUtcDate.getTime() - offsetMs);
+
+    return new Date(tempUtcDate.getTime() + offsetMs);
 }
 
 /**
