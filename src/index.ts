@@ -21,9 +21,13 @@ export * from './contracts/events/profiles-profile-deleted.event';
 export * from './contracts/events/auth-forgot-password-email-code-sent.event';
 export * from './contracts/events/auth-forgot-password-phone-code-sent.event';
 export * from './contracts/events/subscription-updated.event';
+export * from './contracts/events/ai-ingestion-completed.event';
 
 // Re-export rpc contracts
 export * from './contracts/rpc/get-personal-profile';
+export * from './contracts/rpc/ai.generate';
+export * from './contracts/rpc/ai.embed';
+export * from './contracts/rpc/ai.retrieve';
 export * from './contracts/rpc/profile.create';
 export * from './contracts/rpc/patient.create';
 export * from './contracts/rpc/reminders.create-from-rule';
@@ -40,6 +44,7 @@ export * from './rmq-client/rmq.client';
 
 // // Re-export rpc-clients
 export * from './rpc-clients/auth.client';
+export * from './rpc-clients/ai.client';
 export * from './rpc-clients/profiles.client';
 export * from './rpc-clients/records.client';
 export * from './rpc-clients/reminders.client';
