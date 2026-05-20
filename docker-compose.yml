@@ -4,7 +4,7 @@ services:
             context: .
             dockerfile: Dockerfile
         container_name: npm-package
-        restart: always
+        restart: unless-stopped
         working_dir: /app
         tty: true
         volumes:
