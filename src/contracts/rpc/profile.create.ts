@@ -1,5 +1,21 @@
 import { IBaseRpcContract } from './rpc.interface';
 
+type AddressDto = {
+    country?: string;
+    region?: string;
+    city?: string;
+    street?: string;
+    house?: string;
+    apartment?: string;
+    postalCode?: string;
+};
+
+type EmergencyContactDto = {
+    fullName: string;
+    relation: string;
+    phone: string;
+};
+
 type ReqType = {
     firstName: string;
     lastName: string;
@@ -11,6 +27,8 @@ type ReqType = {
         countryCode: string;
         isoCode: string;
     };
+    address?: AddressDto;
+    emergencyContact?: EmergencyContactDto;
 };
 
 type ResType = {

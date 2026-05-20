@@ -6,6 +6,7 @@ declare global {
             id: string;
             role: UserRole;
             sessionId?: string;
+            planId?: string;
         }
     }
 }

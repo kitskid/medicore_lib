@@ -2,7 +2,7 @@ import { randomBytes, createCipheriv, createDecipheriv } from 'node:crypto';
 import { AadPart, EncryptedPayload, KeyProvider } from './types';
 
 export class CryptoService {
-    constructor(private readonly keyProvider: KeyProvider) {}
+    constructor(private readonly keyProvider: KeyProvider) { }
 
     async encrypt(fieldType: string, plaintext: string, aadParts: AadPart[]): Promise<EncryptedPayload> {
         const { dek, keyVersion } = await this.keyProvider.getKey(fieldType);
@@ -23,10 +23,7 @@ export class CryptoService {
     }
 
     async decrypt(fieldType: string, payload: EncryptedPayload, aadParts: AadPart[]): Promise<string> {
-        const { dek, keyVersion } = await this.keyProvider.getKey(fieldType);
-        if (payload.keyVersion !== keyVersion) {
-            // Ключ устарел, но пытаемся расшифровать текущим для обратной совместимости
-        }
+        const { dek } = await this.keyProvider.getKey(fieldType, payload.keyVersion);
         const iv = Buffer.from(payload.iv, 'base64');
         const tag = Buffer.from(payload.tag, 'base64');
         const ciphertext = Buffer.from(payload.ciphertext, 'base64');

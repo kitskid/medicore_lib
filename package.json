@@ -1,6 +1,6 @@
 {
     "name": "@kitskid/medicore_lib",
-    "version": "5.5.0",
+    "version": "7.0.1",
     "description": "npm package with shared types",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -36,10 +36,12 @@
     "packageManager": "pnpm@10.22.0",
     "dependencies": {
         "@nestjs/common": "^11.1.9",
+        "@nestjs/core": "^11.1.9",
         "@nestjs/microservices": "^11.1.9",
         "rxjs": "^7.8.2"
     },
     "peerDependencies": {
-        "@nestjs/swagger": "^11.0.0"
+        "@nestjs/swagger": "^11.0.0",
+        "@nestjs/microservices": "workspace:*"
     }
 }

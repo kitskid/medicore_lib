@@ -10,6 +10,7 @@ export const User = createParamDecorator((data: unknown, ctx: ExecutionContext):
     const userIdHeader = headers['x-user-id'] || headers['X-User-Id'];
     const userRoleHeader = headers['x-user-role'] || headers['X-User-Role'];
     const sessionIdHeader = headers['x-session-id'] || headers['X-Session-Id'];
+    const planIdHeader = headers['x-plan-id'] || headers['X-Plan-Id'];
 
     if (!userIdHeader || !userRoleHeader) {
         throw new UnauthorizedException('User ID or role not found in request headers');
@@ -22,6 +23,11 @@ export const User = createParamDecorator((data: unknown, ctx: ExecutionContext):
         ? Array.isArray(sessionIdHeader)
             ? sessionIdHeader[0]
             : sessionIdHeader
+        : undefined;
+    const planId = planIdHeader
+        ? Array.isArray(planIdHeader)
+            ? planIdHeader[0]
+            : planIdHeader
         : undefined;
 
     if (!userId || !userRoleStr) {
@@ -38,6 +44,7 @@ export const User = createParamDecorator((data: unknown, ctx: ExecutionContext):
         id: String(userId),
         role: role as UserRole,
         ...(sessionId && { sessionId: String(sessionId) }),
+        ...(planId && { planId: String(planId) }),
     };
 
     return user;

@@ -12,7 +12,11 @@ export interface KeySpec {
 }
 
 export interface KeyProvider {
-    getKey(fieldType: string): Promise<KeySpec>;
+    /**
+     * Если keyVersion задан — используется для decrypt (чтобы читать старые данные после ротации).
+     * Если не задан — используется активный ключ (для encrypt).
+     */
+    getKey(fieldType: string, keyVersion?: string): Promise<KeySpec>;
 }
 
 export type AadPart = string | Buffer | Uint8Array;
