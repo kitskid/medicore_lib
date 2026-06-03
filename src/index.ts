@@ -50,6 +50,8 @@ export * from './rpc-clients/profiles.client';
 export * from './rpc-clients/records.client';
 export * from './rpc-clients/reminders.client';
 export * from './rpc-clients/subscription.client';
+export * from './rpc-clients/medicines.client';
+export * from './rpc-clients/notifications.client';
 
 // Crypto utilities
 export * from './crypto';
