@@ -78,3 +78,7 @@ export * from './prisma';
 
 // Secrets env file (загрузка и поллер для Vault Agent–рендеренных файлов)
 export * from './secrets';
+
+// eslint & prettier configs
+export * from './eslint/prettier';
+export * from './eslint/eslint.config';
