@@ -1,9 +1,11 @@
 // Re-export event contracts
 export * from './contracts/events/auth-user-registered.event';
 export * from './contracts/events/auth-email-code-sent.event';
+export * from './contracts/events/auth-email-changed.event';
 export * from './contracts/events/auth-phone-code-sent.event';
 export * from './contracts/events/auth-login-phone-code-sent.event';
 export * from './contracts/events/auth-pin-reset-code-sent.event';
+export * from './contracts/events/auth-session-terminated.event';
 export * from './contracts/events/auth-timezone-updated.event';
 export * from './contracts/events/calendar-appointment-created.event';
 export * from './contracts/events/calendar-appointment-updated.event';
@@ -20,9 +22,13 @@ export * from './contracts/events/auth-forgot-password-email-code-sent.event';
 export * from './contracts/events/auth-forgot-password-phone-code-sent.event';
 export * from './contracts/events/subscription-updated.event';
 export * from './contracts/events/files-delete.event';
+export * from './contracts/events/ai-ingestion-completed.event';
 
 // Re-export rpc contracts
 export * from './contracts/rpc/get-personal-profile';
+export * from './contracts/rpc/ai.generate';
+export * from './contracts/rpc/ai.embed';
+export * from './contracts/rpc/ai.retrieve';
 export * from './contracts/rpc/profile.create';
 export * from './contracts/rpc/patient.create';
 export * from './contracts/rpc/reminders.create-from-rule';
@@ -46,6 +52,7 @@ export * from './rmq-client/rmq.client';
 
 // // Re-export rpc-clients
 export * from './rpc-clients/auth.client';
+export * from './rpc-clients/ai.client';
 export * from './rpc-clients/profiles.client';
 export * from './rpc-clients/records.client';
 export * from './rpc-clients/reminders.client';
